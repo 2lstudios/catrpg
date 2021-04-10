@@ -1,0 +1,8 @@
+# Compilation Directory
+/build/
+/obj/
+
+# Example compilation directory
+/example/obj
+/example/environment/*.pdb
+/example/environment/*.exe

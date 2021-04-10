@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ItemGroup>
+        <Reference Include="OpenTK"/>
+        <Reference Include="System"/>
+        <Reference Include="System.Drawing.Imaging"/>
+        <Reference Include="libraries\*.dll"/>
+
+        <Compile Include="src\*.cs"/>
+        <Compile Include="src\*\*.cs"/>
+    </ItemGroup>
+
+    <Target Name="Build">
+        <MakeDir Directories="$(OutputPath)" Condition="!Exists('$(OutputPath)')"/>
+        <Csc Platform="x64" NoWarn="" Sources="@(Compile)" OutputAssembly="$(OutputPath)$(AssemblyName).dll"/>
+    </Target>
+
+    <PropertyGroup>
+        <AssemblyName>CatRPG</AssemblyName>
+        <OutputPath>build\</OutputPath>
+        <OutputType>Library</OutputType>
+        <TargetFramework>4.5.1</TargetFramework>
+    </PropertyGroup>
+
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+</Project>
