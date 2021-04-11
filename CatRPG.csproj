@@ -1,25 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <ItemGroup>
-        <Reference Include="OpenTK"/>
-        <Reference Include="System"/>
-        <Reference Include="System.Drawing.Imaging"/>
-        <Reference Include="libraries\*.dll"/>
-
-        <Compile Include="src\*.cs"/>
-        <Compile Include="src\*\*.cs"/>
-    </ItemGroup>
-
-    <Target Name="Build">
-        <MakeDir Directories="$(OutputPath)" Condition="!Exists('$(OutputPath)')"/>
-        <Csc Platform="x64" NoWarn="" Sources="@(Compile)" OutputAssembly="$(OutputPath)$(AssemblyName).dll"/>
-    </Target>
-
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <AssemblyName>CatRPG</AssemblyName>
         <OutputPath>build\</OutputPath>
         <OutputType>Library</OutputType>
-        <TargetFramework>4.5.1</TargetFramework>
+        <TargetFramework>net45</TargetFramework>
     </PropertyGroup>
 
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <ItemGroup>
+        <PackageReference Include="NVorbis" Version="0.10.1"/>
+        <PackageReference Include="opentk" Version="3.3.1"/>
+        <PackageReference Include="System.Drawing" Version="1.0.0-beta004"/>
+    </ItemGroup>
 </Project>
